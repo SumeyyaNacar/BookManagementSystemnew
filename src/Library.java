@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Library {
     //degiskenlerim
-    public List<Book> bookList;
-    Book book;
+    private List<Book> bookList;
+    private Scanner scanner;
 
-    Scanner scanner = new Scanner(System.in);
 
     //constr
-    public Library() {
+    public Library(Scanner scanner) {
         this.bookList = new ArrayList<>();
+        this.scanner =scanner;
     }
 
     //kitap ekleme
@@ -22,7 +22,7 @@ public class Library {
         String author = scanner.nextLine();
         System.out.println("Basim yili: ");
         int year = scanner.nextInt();
-        book = new Book(title, author, year);
+        Book book = new Book(title, author, year);
         bookList.add(book);
 
     }
@@ -34,16 +34,21 @@ public class Library {
         for (Book book : bookList) {
             if (book.getTitle().equalsIgnoreCase(title)) {
                 System.out.println(book);
+                return;
             }
         }
+        System.out.println("Kitap bulunamadi");
 
     }
 
     //kitaplari listeleme
     public void listBook() {
-        for (Book book : bookList) {
-            System.out.println(book);
+        if (bookList.isEmpty()){
+            System.out.println("Listede kitap yok");
+        }else {
+            for (Book book : bookList) {
+                System.out.println(book);
+            }
         }
-
     }
 }
