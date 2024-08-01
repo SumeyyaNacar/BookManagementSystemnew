@@ -2,13 +2,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Library library = new Library(scanner);
 
-        start();
+        start(library, scanner);
 
     }
 
-    private static void start() {
-        Scanner scanner = new Scanner(System.in);
+    private static void start(Library library, Scanner scanner) {
 
         int select;
         do {
@@ -18,8 +19,6 @@ public class Main {
             System.out.println("2-Kitap arama");
             System.out.println("3-Kitaplari listeleme");
             System.out.println("0-Cikis...");
-
-            Library library = new Library();
 
             select = scanner.nextInt();
             scanner.nextLine();
@@ -41,7 +40,7 @@ public class Main {
                     System.out.println("Hatali giris, tekrar deneyin...");
 
             }
-        }while (select!=0);
+        } while (select != 0);
         scanner.close();
     }
 }
